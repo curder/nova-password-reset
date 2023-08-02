@@ -5,6 +5,7 @@ namespace Mastani\NovaPasswordReset;
 use Laravel\Nova\Nova;
 use Laravel\Nova\Tool;
 use Illuminate\Http\Request;
+use Laravel\Nova\Menu\MenuSection;
 
 class NovaPasswordReset extends Tool
 {
@@ -26,6 +27,8 @@ class NovaPasswordReset extends Tool
      */
     public function menu(Request $request)
     {
-        //
+        return MenuSection::make(Nova::allTranslations()['novaPasswordReset.ResetPassword'])
+            ->path('/reset-password')
+            ->icon('lock-closed');
     }
 }

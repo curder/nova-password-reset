@@ -1,6 +1,6 @@
 <template>
     <div>
-        <heading class="mb-3">{{ __('Reset My Password') }}</heading>
+        <heading class="mb-3">{{ __('ResetPassword') }}</heading>
 
         <div class="space-y-4">
             <card class="divide-y divide-gray-100 dark:divide-gray-700">
