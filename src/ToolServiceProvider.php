@@ -24,13 +24,7 @@ class ToolServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__ . '/../config/password-reset.php' => config_path('password-reset.php'),
             ], 'config');
-
-            $this->publishes([
-                __DIR__ . '/../resources/views/partials' => resource_path('views/vendor/nova/partials'),
-            ], 'views');
         }
-
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'password-reset');
 
         $this->app->booted(function () {
             $this->routes();
