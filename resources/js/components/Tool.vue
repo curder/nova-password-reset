@@ -91,6 +91,7 @@
 </template>
 
 <script>
+import {tap} from 'lodash';
 import passwordMeter from "vue-simple-password-meter";
 
 export default {
@@ -152,7 +153,7 @@ export default {
             if (this.errors.length > 0)
                 return;
 
-            Nova.request().post('/vendor/password-reset/reset-password', _.tap(new FormData(), formData => {
+            Nova.request().post('/vendor/password-reset/reset-password', tap(new FormData(), formData => {
                 formData.append('current_password', this.current_password)
                 formData.append('new_password', this.new_password)
                 formData.append('confirm_new_password', this.confirm_new_password)

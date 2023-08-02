@@ -39,13 +39,13 @@ class PasswordResetRequest extends FormRequest
         ];
     }
 
-    public function withValidator($validator)
+    public function withValidator($validator): void
     {
         $validator->after(function ($validator) {
             if (!Hash::check($this->current_password, $this->user()->password)) {
                 $validator->errors()->add(
                     'current_password',
-                    Nova::allTranslations()['novaPasswordReset.oldsPasswordIsNotCorrect']
+                    __('password-reset::password-reset.oldsPasswordIsNotCorrect')
                 );
             }
         });
@@ -54,10 +54,10 @@ class PasswordResetRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'current_password.required' => __('novaPasswordReset.oldPasswordRequired'),
-            'new_password.required' => __('novaPasswordReset.newPasswordRequired'),
-            'confirm_new_password.required' => __('novaPasswordReset.confirmPasswordRequired'),
-            'confirm_new_password.same' => Nova::allTranslations()['novaPasswordReset.confirmNewPasswordSame'],
+            'current_password.required' => __('password-reset::password-reset.oldPasswordRequired'),
+            'new_password.required' => __('password-reset::password-reset.newPasswordRequired'),
+            'confirm_new_password.required' => __('password-reset::password-reset.confirmPasswordRequired'),
+            'confirm_new_password.same' => __('password-reset::password-reset.confirmNewPasswordSame'),
         ];
     }
 }
