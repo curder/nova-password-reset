@@ -1,9 +1,5 @@
-Nova.booting((Vue, router, store) => {
-  router.addRoutes([
-    {
-      name: 'nova-password-reset',
-      path: '/nova-password-reset',
-      component: require('./components/Tool'),
-    },
-  ])
+import Tool from './components/Tool'
+
+Nova.booting((Vue) => {
+    Nova.inertia("NovaPasswordReset", Tool);
 })
