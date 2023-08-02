@@ -28,7 +28,7 @@ class PasswordReset extends Tool
     public function menu(Request $request)
     {
         return MenuSection::make(Nova::allTranslations()['ResetPassword'])
-            ->path('/reset-password')
+            ->path('/password-reset')
             ->icon('lock-closed');
     }
 }
