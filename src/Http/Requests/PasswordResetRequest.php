@@ -33,7 +33,7 @@ class PasswordResetRequest extends FormRequest
         $minPasswordSize = config('nova-password-reset.min_password_size');
 
         return [
-            'current_password' => ['required', Password::default()],
+            'current_password' => ['required'],
             'new_password' => "required|string|min:$minPasswordSize",
             'confirm_new_password' => "required|string|min:$minPasswordSize|same:new_password"
         ];
