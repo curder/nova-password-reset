@@ -4,6 +4,7 @@ namespace Mastani\NovaPasswordReset;
 
 use Laravel\Nova\Nova;
 use Laravel\Nova\Tool;
+use Illuminate\Http\Request;
 
 class NovaPasswordReset extends Tool
 {
