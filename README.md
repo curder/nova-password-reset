@@ -50,7 +50,7 @@ If you want to specify the min length of password you can publish the config fil
 php artisan vendor:publish --provider="Mastani\NovaPasswordReset\ToolServiceProvider" --tag="config"
 ```
 
-Now head over to "config/nova-password-reset.php" and you can change the value:
+Now head over to "config/password-reset.php" and you can change the value:
 ```
 'min_password_size' => 5
 ```

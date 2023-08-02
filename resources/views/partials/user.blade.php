@@ -18,7 +18,7 @@
                 {{ __('Logout') }}
             </a>
 
-            <router-link :to="{name: 'nova-password-reset'}" class="block no-underline text-90 hover:bg-30 p-3">
+            <router-link :to="{name: 'password-reset'}" class="block no-underline text-90 hover:bg-30 p-3">
                 {{ __('ResetPassword') }}
             </router-link>
         </li>

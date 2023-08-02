@@ -7,7 +7,7 @@ use Laravel\Nova\Tool;
 use Illuminate\Http\Request;
 use Laravel\Nova\Menu\MenuSection;
 
-class NovaPasswordReset extends Tool
+class PasswordReset extends Tool
 {
     /**
      * Perform any tasks that need to happen when the tool is booted.
@@ -16,7 +16,7 @@ class NovaPasswordReset extends Tool
      */
     public function boot()
     {
-        Nova::script('nova-password-reset', __DIR__ . '/../dist/js/tool.js');
+        Nova::script('password-reset', __DIR__ . '/../dist/js/tool.js');
     }
 
     /**

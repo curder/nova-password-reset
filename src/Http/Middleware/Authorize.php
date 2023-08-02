@@ -4,7 +4,7 @@ namespace Mastani\NovaPasswordReset\Http\Middleware;
 
 use Illuminate\Http\JsonResponse;
 use Laravel\Nova\Nova;
-use Mastani\NovaPasswordReset\NovaPasswordReset;
+use Mastani\NovaPasswordReset\PasswordReset;
 
 class Authorize
 {
@@ -30,6 +30,6 @@ class Authorize
      */
     public function matchesTool($tool): bool
     {
-        return $tool instanceof NovaPasswordReset;
+        return $tool instanceof PasswordReset;
     }
 }

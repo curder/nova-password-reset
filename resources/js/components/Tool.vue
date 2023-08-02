@@ -109,7 +109,7 @@ export default {
     },
     methods: {
         getPasswordSize: function () {
-            Nova.request().get('/nova-vendor/nova-password-reset/min-password-size').then(response => {
+            Nova.request().get('/vendor/password-reset/min-password-size').then(response => {
                     this.min_password_size = response.data.minpassw;
                 }
             );
@@ -152,7 +152,7 @@ export default {
             if (this.errors.length > 0)
                 return;
 
-            Nova.request().post('/nova-vendor/nova-password-reset/reset-password', _.tap(new FormData(), formData => {
+            Nova.request().post('/vendor/password-reset/reset-password', _.tap(new FormData(), formData => {
                 formData.append('current_password', this.current_password)
                 formData.append('new_password', this.new_password)
                 formData.append('confirm_new_password', this.confirm_new_password)

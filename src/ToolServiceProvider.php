@@ -22,15 +22,15 @@ class ToolServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             // Config
             $this->publishes([
-                __DIR__ . '/../config/nova-password-reset.php' => config_path('nova-password-reset.php'),
+                __DIR__ . '/../config/password-reset.php' => config_path('password-reset.php'),
             ], 'config');
 
             $this->publishes([
                 __DIR__ . '/../resources/views/partials' => resource_path('views/vendor/nova/partials'),
-            ], 'nova-views');
+            ], 'views');
         }
 
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'nova-password-reset');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'password-reset');
 
         $this->app->booted(function () {
             $this->routes();
@@ -55,11 +55,11 @@ class ToolServiceProvider extends ServiceProvider
             return;
         }
 
-        Nova::router(['nova', Authenticate::class, Authorize::class], 'nova-password-reset')
+        Nova::router(['nova', Authenticate::class, Authorize::class], 'password-reset')
             ->group(__DIR__.'/../routes/inertia.php');
 
         Route::middleware(['nova', Authorize::class])
-            ->prefix('nova-vendor/nova-password-reset')
+            ->prefix('vendor/password-reset')
             ->group(__DIR__.'/../routes/api.php');
 
     }
@@ -67,7 +67,7 @@ class ToolServiceProvider extends ServiceProvider
     protected function translations()
     {
         if ($this->app->runningInConsole()) {
-            $this->publishes([__DIR__ . '/../resources/lang' => resource_path('lang/vendor/nova-password-reset')],
+            $this->publishes([__DIR__ . '/../resources/lang' => resource_path('lang/vendor/password-reset')],
                 'translations');
         } elseif (method_exists('Nova', 'translations')) {
             $locale = app()->getLocale();
@@ -85,7 +85,7 @@ class ToolServiceProvider extends ServiceProvider
     {
         $filePath = $from === 'local'
             ? __DIR__ . '/../resources/lang/' . $locale . '.json'
-            : resource_path('lang/vendor/nova-password-reset') . '/' . $locale . '.json';
+            : resource_path('lang/vendor/password-reset') . '/' . $locale . '.json';
         $localeFileExists = File::exists($filePath);
         if ($localeFileExists) {
             Nova::translations($filePath);

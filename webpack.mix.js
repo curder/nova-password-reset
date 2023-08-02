@@ -6,4 +6,4 @@ mix
   .setPublicPath('dist')
   .js('resources/js/tool.js', 'js')
   .vue({ version: 3 })
-  .nova('mastani/nova-password-reset')
+  .nova('mastani/password-reset')
