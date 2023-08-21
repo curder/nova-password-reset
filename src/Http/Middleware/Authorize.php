@@ -2,7 +2,6 @@
 
 namespace Mastani\NovaPasswordReset\Http\Middleware;
 
-use Illuminate\Http\JsonResponse;
 use Laravel\Nova\Nova;
 use Mastani\NovaPasswordReset\PasswordReset;
 
@@ -11,8 +10,8 @@ class Authorize
     /**
      * Handle the incoming request.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param \Closure $next
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
      * @return Response
      */
     public function handle($request, $next)
@@ -25,8 +24,7 @@ class Authorize
     /**
      * Determine whether this tool belongs to the package.
      *
-     * @param \Laravel\Nova\Tool $tool
-     * @return bool
+     * @param  \Laravel\Nova\Tool  $tool
      */
     public function matchesTool($tool): bool
     {

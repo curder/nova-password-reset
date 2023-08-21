@@ -2,19 +2,14 @@
 
 namespace Mastani\NovaPasswordReset;
 
+use Laravel\Nova\Nova;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\ServiceProvider;
-use Laravel\Nova\Events\ServingNova;
-use Laravel\Nova\Nova;
-use Laravel\Nova\Http\Middleware\Authenticate;
-use Mastani\NovaPasswordReset\Http\Middleware\Authorize;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class ToolServiceProvider extends PackageServiceProvider
 {
-
     public function configurePackage(Package $package): void
     {
         $package
@@ -23,17 +18,17 @@ class ToolServiceProvider extends PackageServiceProvider
             ->hasTranslations()
             ->hasRoutes('api', 'inertia');
 
-        Nova::router(['nova', Authenticate::class, Authorize::class], 'password-reset')
-            ->group(__DIR__ . '/../routes/inertia.php');
+        Nova::router(config('password-reset.middleware'), 'password-reset')
+            ->group(__DIR__.'/../routes/inertia.php');
 
-        Route::middleware(['nova', Authorize::class])
+        Route::middleware(config('password-reset.api_middleware'))
             ->prefix('vendor/password-reset')
-            ->group(__DIR__ . '/../routes/api.php');
+            ->group(__DIR__.'/../routes/api.php');
 
         Nova::serving(function () {
             $locale = app()->getLocale();
-            $localeFile = lang_path('vendor/password-reset') . '/' . $locale . '.json';
-            $filePath = __DIR__ . '/../resources/lang/' . $locale . '.json';
+            $localeFile = lang_path('vendor/password-reset').'/'.$locale.'.json';
+            $filePath = __DIR__.'/../resources/lang/'.$locale.'.json';
 
             File::exists($localeFile)
                 ? Nova::translations($localeFile)

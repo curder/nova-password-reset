@@ -10,4 +10,3 @@ return [
     'novaPasswordReset.confirmPasswordSize' => '确认密码必须大于或等于:minpass个字符',
     'novaPasswordReset.confirmNewPasswordSame' => '新密码和确认密码不一致',
 ];
-

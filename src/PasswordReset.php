@@ -16,13 +16,12 @@ class PasswordReset extends Tool
      */
     public function boot()
     {
-        Nova::script('password-reset', __DIR__ . '/../dist/js/tool.js');
+        Nova::script('password-reset', __DIR__.'/../dist/js/tool.js');
     }
 
     /**
      * Build the menu that renders the navigation links for the tool.
      *
-     * @param Request $request
      * @return mixed
      */
     public function menu(Request $request)

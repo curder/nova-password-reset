@@ -9,4 +9,3 @@ return [
     'novaPasswordReset.confirmPasswordRequired' => 'New password confirmation required.',
     'novaPasswordReset.confirmPasswordSize' => 'New password confirmation must be greater than or equal :minpass characters.',
 ];
-
