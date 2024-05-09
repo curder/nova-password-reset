@@ -18,7 +18,7 @@ class ToolServiceProvider extends PackageServiceProvider
             ->name('password-reset')
             ->hasConfigFile()
             ->hasTranslations()
-            ->hasRoutes('api', 'inertia');
+            ->hasRoutes('api');
 
         Nova::serving(function () {
             $locale = app()->getLocale();
@@ -36,7 +36,7 @@ class ToolServiceProvider extends PackageServiceProvider
     public function packageRegistered(): void
     {
         // Register router for view
-        Nova::router(config('password-reset.middleware'), 'password-reset')
+        Nova::router(config('password-reset.middleware'), '')
             ->group(__DIR__.'/../routes/inertia.php');
 
         // Register router for api

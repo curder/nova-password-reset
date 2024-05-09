@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Laravel\Nova\Http\Requests\NovaRequest;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +13,5 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 |
 */
 
-Route::get('/', function (NovaRequest $request) {
-    return inertia('PasswordReset');
-});
+Route::get('/password-reset', fn () => inertia('PasswordReset'))
+    ->name('laravel-nova.password-reset');

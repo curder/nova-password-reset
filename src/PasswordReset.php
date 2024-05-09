@@ -27,7 +27,7 @@ class PasswordReset extends Tool
     public function menu(Request $request)
     {
         return MenuSection::make(__('password-reset::password-reset.ResetPassword'))
-            ->path('/password-reset')
+            ->path(route('laravel-nova.password-reset'))
             ->icon('lock-closed');
     }
 }
